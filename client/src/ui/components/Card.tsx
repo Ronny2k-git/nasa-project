@@ -23,7 +23,7 @@ export function Card({
       {...props}
     >
       {/* Card Corner Edges */}
-      {cornerBorders && <CornerBorders color="border-cyan-400" size="md" />}
+      {cornerBorders && <CornerBorders color="border-cyan-400" size="sm" />}
 
       {/* Children */}
       {children}

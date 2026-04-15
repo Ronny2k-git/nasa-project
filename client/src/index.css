@@ -19,6 +19,7 @@
   --color-cyber-cyan: rgba(62, 155, 185);
   --color-cyber-cyan-text: rgba(96, 215, 250);
   --color-cyan-text-light: rgba(166, 223, 238);
+  --color-cyan-muted: rgba(166, 223, 238, 0.4);
 
   --text-description: 1.1875rem;
 }

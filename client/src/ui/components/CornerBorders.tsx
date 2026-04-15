@@ -24,16 +24,16 @@ export function CornerBorders({ color, size = "md" }: CornerBordersProps) {
   return (
     <>
       <span
-        className={`absolute -top-[2.8px] ${sizeClass} -left-[2.8px] border-t-2 border-l-2 ${color}`}
+        className={`absolute top-0 ${sizeClass} left-0 border-t-2 border-l-2 ${color}`}
       />
       <span
-        className={`absolute -top-[2.8px] ${sizeClass} -right-[2.8px] border-r-2 border-t-2 ${color}`}
+        className={`absolute top-0 ${sizeClass} right-0 border-r-2 border-t-2 ${color}`}
       />
       <span
-        className={`absolute -bottom-[2.8px] ${sizeClass} -left-[2.8px] border-b-2 border-l-2 ${color}`}
+        className={`absolute -bottom-0 ${sizeClass} left-0 border-b-2 border-l-2 ${color}`}
       />
       <span
-        className={`absolute -bottom-[2.8px] ${sizeClass} -right-[2.8px] border-b-2 border-r-2 ${color}`}
+        className={`absolute -bottom-0 ${sizeClass} right-0 border-b-2 border-r-2 ${color}`}
       />
     </>
   );

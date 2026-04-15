@@ -64,76 +64,88 @@ export default function Launch() {
 
         <Divider />
 
-        {/* Card */}
-        <Card className="gap-4 sm:gap-6 text-cyber-cyan-text">
-          <Divider label="Eligibility Criteria" />
+        {/* Cards */}
+        <div className="flex flex-col gap-4">
+          <Card className="gap-4 sm:gap-6 p-6 text-cyber-cyan-text">
+            <Divider label="Eligibility Criteria" />
 
-          <h2 className="text-cyan-text-light/40">
-            Only confirmed planets matching the following criteria are available
-            for the earliest scheduled missions:
-          </h2>
+            <h2 className="text-cyan-muted">
+              Only confirmed planets matching the following criteria are
+              available for the earliest scheduled missions:
+            </h2>
 
-          <div className="flex flex-col gap-2">
-            {eligibilityPlanets.map((planet) => (
-              <div className="flex gap-2 p-2 text-sm sm:text-lg border-l-2 border border-cyan-900/70 border-l-cyber-cyan-text text-cyan-text-light bg-cyan-950/50">
-                <span className="text-cyan-800">0{planet.id}</span>
-                <p>{planet.description}</p>
-              </div>
-            ))}
-          </div>
+            <div className="flex flex-col gap-2">
+              {eligibilityPlanets.map((planet) => (
+                <div className="flex gap-2 p-2 text-sm sm:text-lg border-l-2 border border-cyan-900/70 border-l-cyber-cyan-text text-cyan-text-light bg-cyan-950/50">
+                  <span className="text-cyan-800">0{planet.id}</span>
+                  <p>{planet.description}</p>
+                </div>
+              ))}
+            </div>
+          </Card>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            <Input
-              className="h-10 "
-              type="date"
-              label="● Launch Date"
-              required={true}
-            />
+          <Card className="gap-4 sm:gap-6 p-6 text-cyber-cyan-text">
+            <Divider label="Mission Parameters" />
 
-            <Input
-              className="h-10 "
-              type="text"
-              label="● Mission Name"
-              required={true}
-            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <Input
+                className="h-10 "
+                type="date"
+                label="● Launch Date"
+                required={true}
+              />
 
-            <Input
-              className="h-10 "
-              type="text"
-              defaultValue={"Explorer IS1"}
-              label="● Rocket System"
-            />
+              <Input
+                className="h-10 "
+                type="text"
+                label="● Mission Name"
+                required={true}
+              />
 
-            <Selector
-              className="h-10"
-              label="● Destination Exoplanet"
-              required={true}
-            >
-              <option value="">Exoplanets</option>
-              <option value="">Test</option>
-            </Selector>
-          </div>
+              <Input
+                className="h-10 "
+                type="text"
+                defaultValue={"Explorer IS1"}
+                label="● Rocket System"
+              />
+
+              <Selector
+                className="h-10"
+                label="● Destination Exoplanet"
+                required={true}
+              >
+                <option value="">Exoplanets</option>
+                <option value="">Test</option>
+              </Selector>
+            </div>
+
+            <Divider />
+
+            <div className="flex w-full max-sm:flex-col gap-4 justify-between">
+              <p className="text-xs max-w-[15rem] text-cyan-muted">
+                All fields marked{" "}
+                <span className="text-orange-300 px-1 font-mono tracking-tighter">
+                  REQ
+                </span>{" "}
+                are mandatory. Mission will be queued for director authorization
+                upon submission.
+              </p>
+
+              <Button
+                className={`sm:w-[14rem] text-base gap-1 ${active ? "bg-green-500/30" : ""}`}
+                onClick={(e) => handleClick(e)}
+              >
+                Launch Mission <Check className="size-4" />
+              </Button>
+            </div>
+          </Card>
 
           <Divider />
 
-          <div className="flex w-full max-sm:flex-col gap-4 justify-between">
-            <p className="text-xs max-w-[15rem] text-cyan-text-light/40">
-              All fields marked{" "}
-              <span className="text-orange-300 px-1 font-mono tracking-tighter">
-                REQ
-              </span>{" "}
-              are mandatory. Mission will be queued for director authorization
-              upon submission.
-            </p>
-
-            <Button
-              className={`sm:w-[14rem] text-base gap-1 ${active ? "bg-green-500/30" : ""}`}
-              onClick={(e) => handleClick(e)}
-            >
-              Launch Mission <Check className="size-4" />
-            </Button>
-          </div>
-        </Card>
+          <span className="text-xs text-cyan-muted">
+            NASA MISSION CONTROL · RESTRICTED ACCESS
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ export function LaunchInfoCard({
 }: LaunchInfoCardProps) {
   return (
     <Card className="w-full" cornerBorders={false}>
-      <span className="text-xs text-cyan-text-light/40 font-mono uppercase whitespace-nowrap">
+      <span className="text-xs text-cyan-muted font-mono uppercase whitespace-nowrap">
         {title}
       </span>
       <span className={`text-sm font-semibold ${textColor}`}>{text}</span>

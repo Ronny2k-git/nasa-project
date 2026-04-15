@@ -5,7 +5,7 @@ export default function Upcoming() {
   return (
     <div className="flex w-full h-full justify-center px-4 py-8 sm:px-8">
       <div className="w-full max-w-3xl text-base sm:text-description">
-        <Card className="sm:gap-6 text-cyber-cyan-text">
+        <Card className="gap-4 sm:gap-6 p-6 text-cyber-cyan-text">
           <h1>
             Upcoming missions including both SpaceX launches and newly scheduled
             Zero to Mastery rockets.
