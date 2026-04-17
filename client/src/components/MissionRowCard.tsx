@@ -1,15 +1,11 @@
-export type MissionRowCardProps = {
-  id: number;
-  date: string;
-  mission: string;
-  rocket: string;
-  destination: string;
-  status?: "successful" | "aborted";
-};
+import type { Mission } from "../types";
+
+export interface MissionRowCardProps extends Mission {
+  className?: string;
+}
 
 const statusBorder = {
-  successful: "border-l-green-500",
-  aborted: "border-l-red-400",
+  default: "border-l-cyan-600",
   pending: "border-l-orange-300/90",
 };
 
@@ -18,24 +14,28 @@ export function MissionRowCard({
   date,
   mission,
   rocket,
-  destination,
+  target,
   status,
 }: MissionRowCardProps) {
   return (
     <tr
-      className={`h-12 bg-cyan-800/20 border-b border-b-cyan-900  border-l-3 
-        ${status ? statusBorder[status] : statusBorder.pending}`}
+      className={`h-11 bg-cyan-800/20 border-b border-cyan-900/70  border-l-3 
+        ${status ? statusBorder["default"] : statusBorder.pending} text-[15px]`}
     >
-      <td align="center">{id}</td>
+      <td align="center" className="font-heading text-xs">
+        {String(id).padStart(2, "0")}
+      </td>
       <td align="center">{date}</td>
-      <td align="center">{mission}</td>
+      <td align="center" className="text-white/85 font-semibold">
+        {mission}
+      </td>
       <td align="center">{rocket}</td>
-      <td align="center">{destination}</td>
+      <td align="center">{target}</td>
       <td align="center">
         {status === "aborted" ? (
           <div className="size-6 bg-red-400/90" />
-        ) : status === "successful" ? (
-          <div className="size-6 bg-green-500" />
+        ) : status === "success" ? (
+          <div className="size-6 bg-green-500/90" />
         ) : (
           <button
             aria-label="Abort mission"

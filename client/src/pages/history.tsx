@@ -1,6 +1,7 @@
+import { ShieldCheck, ShieldX } from "lucide-react";
 import { InfoCard, MissionRowCard } from "../components";
-import { historyInfoCards, type HistoryData } from "../consts";
-import { Card, Divider, Input } from "../ui/components";
+import { historyInfoCards, missions, type HistoryData } from "../consts";
+import { Button, Card, Divider, Input } from "../ui/components";
 
 export default function History() {
   const infoHistoryCardData: HistoryData = {
@@ -9,6 +10,22 @@ export default function History() {
     firstLaunch: "2006",
     status: "Verified",
   };
+
+  const filters = [
+    { value: "all", label: "All" },
+    {
+      value: "success",
+      icon: ShieldCheck,
+      iconColor: "text-green-500",
+      label: "Success",
+    },
+    {
+      value: "aborted",
+      icon: ShieldX,
+      iconColor: "text-red-400",
+      label: "Aborted",
+    },
+  ];
 
   return (
     <div className="flex w-full h-full justify-center px-4 py-8 sm:px-8">
@@ -41,13 +58,30 @@ export default function History() {
 
             <Divider label="Launch Archive" />
 
-            <Input
-              className="h-9"
-              placeholder="Search mission, rocket, customer..."
-            />
+            <div className="flex items-center gap-2">
+              <div className="flex-1">
+                <Input
+                  className="h-9"
+                  placeholder="Search mission, rocket, customer..."
+                />
+              </div>
+
+              {filters.map((item, i) => (
+                <Button
+                  key={`${item.value}_${i}`}
+                  className="text-xs uppercase gap-1"
+                  variant="ghost"
+                >
+                  {item.icon && (
+                    <item.icon className={`size-4 ${item.iconColor}`} />
+                  )}
+                  {item.label}
+                </Button>
+              ))}
+            </div>
 
             <table className="w-full text-base text-cyan-text-light mb-8 min-w-[40rem]">
-              <thead className="bg-cyan-400/5 border-b border-cyan-900">
+              <thead className="bg-cyan-400/5 border-b border-cyber-cyan-text">
                 <tr>
                   <th>No.</th>
                   <th>Date</th>
@@ -59,15 +93,15 @@ export default function History() {
               </thead>
 
               <tbody>
-                {Array.from({ length: 10 }).map((_, i) => (
+                {missions.map((item, i) => (
                   <MissionRowCard
                     key={i}
-                    id={1}
-                    date="May 16 2026"
-                    mission="FalconSat"
-                    rocket="Falcon 1"
-                    destination="Kepler-443 b"
-                    status="successful"
+                    id={item.id}
+                    date={item.date}
+                    mission={item.mission}
+                    rocket={item.rocket}
+                    target={item.target}
+                    status={item.status}
                   />
                 ))}
               </tbody>

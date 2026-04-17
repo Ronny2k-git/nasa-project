@@ -1,4 +1,4 @@
-type BorderColor =
+export type BorderColor =
   | "border-cyan-400"
   | "border-cyan-500"
   | "border-green-400"

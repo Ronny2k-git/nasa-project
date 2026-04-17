@@ -70,8 +70,11 @@ export default function Launch() {
             </h2>
 
             <div className="flex flex-col gap-2">
-              {eligibilityPlanets.map((planet) => (
-                <div className="flex gap-2 p-2 text-sm sm:text-base border-l-2 border-l-cyber-cyan-text text-cyan-text-light bg-cyan-950/50">
+              {eligibilityPlanets.map((planet, i) => (
+                <div
+                  key={i}
+                  className="flex gap-2 p-2 text-sm sm:text-base border-l-2 border-l-cyber-cyan-text text-cyan-text-light bg-cyan-950/50"
+                >
                   <span className="text-cyan-muted">0{planet.id}</span>
                   <p>{planet.description}</p>
                 </div>
@@ -128,7 +131,7 @@ export default function Launch() {
               </p>
 
               <Button
-                className={`sm:w-[14rem] text-base gap-2 ${active ? "bg-green-500/30" : ""}`}
+                className={`sm:w-[14rem] gap-2 ${active ? "bg-green-500/30" : ""}`}
                 onClick={(e) => handleClick(e)}
               >
                 Launch Mission <Check className="size-4" />

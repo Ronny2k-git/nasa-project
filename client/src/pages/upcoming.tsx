@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import { InfoCard, MissionRowCard } from "../components";
-import { upcomingInfoCards, type UpcomingData } from "../consts";
+import { missions, upcomingInfoCards, type UpcomingData } from "../consts";
 import { Card, Divider, Input } from "../ui/components";
 
 export default function Upcoming() {
@@ -13,9 +13,7 @@ export default function Upcoming() {
 
   // TO DO TOMORROW:
 
-  // 1 FINISH MISSION ROW CARD COMPONENT
   // 2 FINISH UPCOMING AND HISTORY PAGE DESIGN MOCK
-  // 3 IMPLEMENT FILTERS ON THE UPCOMING AND HISTORY PAGES
   // 4 CREATE A PAGINANTION COMPONENT
 
   return (
@@ -47,12 +45,15 @@ export default function Upcoming() {
               scheduled Zero to Mastery rockets.
             </h2>
 
-            <h3 className="flex items-center text-cyan-muted">
-              Warning! Clicking on the <X className="text-red-500 size-6" />
-              aborts the mission.
-            </h3>
+            <div className="flex max-sm:flex-col items-end gap-4 text-xs uppercase">
+              <Divider label="Active Launch Mission" />
 
-            <Divider label="Active Launch Mission" />
+              <div className="flex justify-center max-sm:w-full w-[16rem] p-1.5 text-red-400/90 border border-red-400/50 bg-red-500/10">
+                <h3 className="flex items-center">
+                  Click <X className="size-4" /> to abort Mission
+                </h3>
+              </div>
+            </div>
 
             <Input
               className="h-9"
@@ -72,14 +73,14 @@ export default function Upcoming() {
               </thead>
 
               <tbody>
-                {Array.from({ length: 10 }).map((_, i) => (
+                {missions.map((item, i) => (
                   <MissionRowCard
                     key={i}
-                    id={1}
-                    date="May 16 2026"
-                    mission="FalconSat"
-                    rocket="Falcon 1"
-                    destination="Kepler-443 b"
+                    id={item.id}
+                    date={item.date}
+                    mission={item.mission}
+                    rocket={item.rocket}
+                    target={item.target}
                   />
                 ))}
               </tbody>
