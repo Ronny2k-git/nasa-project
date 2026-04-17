@@ -46,26 +46,30 @@ export default function History() {
               placeholder="Search mission, rocket, customer..."
             />
 
-            <table className="w-full text-base text-cyan-text-light mb-8">
-              <thead className="bg-cyan-400/5 border-b border-cyber-cyan">
+            <table className="w-full text-base text-cyan-text-light mb-8 min-w-[40rem]">
+              <thead className="bg-cyan-400/5 border-b border-cyan-900">
                 <tr>
                   <th>No.</th>
                   <th>Date</th>
                   <th>Mission</th>
                   <th>Rocket</th>
                   <th>Customers</th>
-                  <th>Abort</th>
+                  <th>Status</th>
                 </tr>
               </thead>
 
               <tbody>
-                <MissionRowCard
-                  id={1}
-                  date="May 16 2026"
-                  mission="FalconSat"
-                  rocket="Falcon 1"
-                  destination="Kepler-443 b"
-                />
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <MissionRowCard
+                    key={i}
+                    id={1}
+                    date="May 16 2026"
+                    mission="FalconSat"
+                    rocket="Falcon 1"
+                    destination="Kepler-443 b"
+                    status="successful"
+                  />
+                ))}
               </tbody>
             </table>
           </Card>

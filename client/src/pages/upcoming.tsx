@@ -4,16 +4,19 @@ import { upcomingInfoCards, type UpcomingData } from "../consts";
 import { Card, Divider, Input } from "../ui/components";
 
 export default function Upcoming() {
-  // TO DO TOMORROW:
-
-  // 1 FINISH UPCOMING PAGE DESIGN MOCK
-  // 2 FINISH HISTORY PAGE DESIGN MOCK
   const infoUpcomingCardData: UpcomingData = {
     launchedMissions: 6,
     nextWindow: "May 13, 2026",
     rocketsReady: 3,
     status: "Scheduling",
   };
+
+  // TO DO TOMORROW:
+
+  // 1 FINISH MISSION ROW CARD COMPONENT
+  // 2 FINISH UPCOMING AND HISTORY PAGE DESIGN MOCK
+  // 3 IMPLEMENT FILTERS ON THE UPCOMING AND HISTORY PAGES
+  // 4 CREATE A PAGINANTION COMPONENT
 
   return (
     <div className="flex w-full h-full justify-center px-4 py-8 sm:px-8">
@@ -69,13 +72,16 @@ export default function Upcoming() {
               </thead>
 
               <tbody>
-                <MissionRowCard
-                  id={1}
-                  date="May 16 2026"
-                  mission="FalconSat"
-                  rocket="Falcon 1"
-                  destination="Kepler-443 b"
-                />
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <MissionRowCard
+                    key={i}
+                    id={1}
+                    date="May 16 2026"
+                    mission="FalconSat"
+                    rocket="Falcon 1"
+                    destination="Kepler-443 b"
+                  />
+                ))}
               </tbody>
             </table>
           </Card>
