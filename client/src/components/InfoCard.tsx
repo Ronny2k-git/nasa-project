@@ -1,3 +1,4 @@
+import type { ComponentPropsWithRef } from "react";
 import { Card } from "../ui/components";
 
 export type textColor =
@@ -5,15 +6,15 @@ export type textColor =
   | "text-green-600"
   | "text-orange-300";
 
-export type InfoCardProps = {
+export type InfoCardProps = ComponentPropsWithRef<"div"> & {
   title: string;
   text: string | number;
   textColor: textColor;
 };
 
-export function InfoCard({ title, text, textColor }: InfoCardProps) {
+export function InfoCard({ title, text, textColor, ...props }: InfoCardProps) {
   return (
-    <Card className="w-full p-3" cornerBorders={false}>
+    <Card className="w-full p-3" cornerBorders={false} {...props}>
       <span className="text-xs text-cyan-muted font-mono uppercase whitespace-nowrap">
         {title}
       </span>
