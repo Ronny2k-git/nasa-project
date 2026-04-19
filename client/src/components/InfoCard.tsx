@@ -3,7 +3,8 @@ import { Card } from "../ui/components";
 
 export type textColor =
   | "text-cyber-cyan-text"
-  | "text-green-600"
+  | "text-white/85"
+  | "text-green-400"
   | "text-orange-300";
 
 export type InfoCardProps = ComponentPropsWithRef<"div"> & {
@@ -18,7 +19,11 @@ export function InfoCard({ title, text, textColor, ...props }: InfoCardProps) {
       <span className="text-xs text-cyan-muted font-mono uppercase whitespace-nowrap">
         {title}
       </span>
-      <span className={`text-sm font-semibold ${textColor}`}>{text}</span>
+      <span
+        className={`font-heading font-semibold text-sm sm:text-lg ${textColor}`}
+      >
+        {text}
+      </span>
     </Card>
   );
 }

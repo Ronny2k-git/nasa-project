@@ -1,10 +1,10 @@
-import { CheckCircle, History, Timer } from "lucide-react";
+import { History, Rocket, Timer } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useClickFeedback } from "../hooks";
 import { Clock } from "./Clock";
 
 const headerNavigation = [
-  { nav: "/", icon: CheckCircle, label: "Launch" },
+  { nav: "/", icon: Rocket, label: "Launch" },
   { nav: "/upcoming", icon: Timer, label: "Upcoming" },
   { nav: "/history", icon: History, label: "History" },
 ];
@@ -29,14 +29,14 @@ export function Header() {
 
   return (
     <header
-      className="w-full h-auto max-md:p-4 md:h-20 max-md:gap-4 flex flex-wrap items-center justify-center
-       border-b-3 border-cyber-cyan bg-light-background/70"
+      className="w-full h-auto max-md:p-4 md:h-20 max-md:gap-4 flex max-md:flex-wrap items-center justify-center
+       border-b border-cyber-cyan/50 bg-light-background/70"
     >
       <img src={"/favicon.png"} className="size-12" alt="website-logo" />
 
-      <div className="flex flex-col leading-8 md:px-4">
+      <div className="h-full flex flex-col justify-center leading-8 md:px-4 mr-2 md:border-r-2 border-cyan-900/40 ">
         <span className="text-cyber-cyan-text text-3xl font-heading">NASA</span>
-        <span className="text-xs text-cyan-muted uppercase font-semibold">
+        <span className="text-xs text-cyan-muted uppercase font-semibold whitespace-nowrap">
           Mission Control
         </span>
       </div>
@@ -54,8 +54,8 @@ export function Header() {
                 href={item.nav}
                 aria-label="website-navigation"
                 onClick={(e) => handleClick(i, item.nav, e)}
-                className={`flex items-center justify-center gap-2 max-md:px-2 md:w-[8rem] max-md:h-13 border-x border-cyan-900/40 
-                ${currentActiveNav && "bg-cyan-950/35 border-t-3 border-t-cyan-600"}`}
+                className={`flex items-center justify-center gap-2 max-md:px-2 md:w-[8rem] max-md:h-13
+                ${currentActiveNav && "bg-cyan-950/35 border-b-3 border-b-cyan-600 text-cyan-600"}`}
               >
                 {item.icon && <item.icon className="w-5 h-5" />}
                 {item.label}
@@ -65,7 +65,7 @@ export function Header() {
         })}
       </nav>
 
-      <div className="flex items-center w-[11rem] border-x border-x-cyan-900/40 -tracking-wider">
+      <div className="flex items-center w-[11rem] md:border-x ml-2 border-x-cyan-900/40 -tracking-wider">
         <div className="flex justify-between w-full p-2 md:p-5 text-cyan-muted ">
           {/* System status */}
           <div className="flex flex-col text-xs">

@@ -37,14 +37,14 @@ export const launchInfoCards: CardConfig<LaunchData>[] = [
   {
     title: "Next Launch Window",
     key: "nextWindow",
-    textColor: "text-cyber-cyan-text",
+    textColor: "text-white/85",
   },
   {
     title: "Active Missions",
     key: "activeMissions",
-    textColor: "text-cyber-cyan-text",
+    textColor: "text-orange-300",
   },
-  { title: "Fleet Status", key: "status", textColor: "text-green-600" },
+  { title: "Fleet Status", key: "status", textColor: "text-green-400" },
 ];
 
 export const upcomingInfoCards: CardConfig<UpcomingData>[] = [
@@ -56,12 +56,12 @@ export const upcomingInfoCards: CardConfig<UpcomingData>[] = [
   {
     title: "Next Launch Window",
     key: "nextWindow",
-    textColor: "text-cyber-cyan-text",
+    textColor: "text-white/85",
   },
   {
     title: "Rockets Ready",
     key: "rocketsReady",
-    textColor: "text-cyber-cyan-text",
+    textColor: "text-orange-300",
   },
   { title: "Status", key: "status", textColor: "text-orange-300" },
 ];
@@ -75,14 +75,14 @@ export const historyInfoCards: CardConfig<HistoryData>[] = [
   {
     title: "Successful Launches",
     key: "successfull",
-    textColor: "text-green-600",
+    textColor: "text-green-400",
   },
   {
     title: "First Launch",
     key: "firstLaunch",
-    textColor: "text-cyber-cyan-text",
+    textColor: "text-white/85",
   },
-  { title: "Archive Status", key: "status", textColor: "text-green-600" },
+  { title: "Archive Status", key: "status", textColor: "text-green-400" },
 ];
 
 export const missions: Mission[] = [

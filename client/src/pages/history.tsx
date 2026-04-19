@@ -54,7 +54,7 @@ export default function History() {
         </div>
 
         {/* Title */}
-        <h1 className="text-white/80 text-2xl sm:text-[32px] sm:max-w-[24rem] font-heading leading-10">
+        <h1 className="font-extrabold text-white/85 text-2xl sm:text-4xl font-heading leading-10">
           Mission <span className="text-cyber-cyan-text">History</span>
         </h1>
 

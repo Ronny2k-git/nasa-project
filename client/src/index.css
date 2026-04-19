@@ -12,10 +12,15 @@
   }
 }
 
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 2px currentColor;
+  }
+}
+
 @font-face {
   font-family: "Orbitron";
   src: url("/fonts/Orbitron-Regular.woff2") format("woff2");
-  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }

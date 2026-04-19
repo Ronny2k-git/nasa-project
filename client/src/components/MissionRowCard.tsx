@@ -35,7 +35,7 @@ export function MissionRowCard({
         {status === "aborted" ? (
           <div className="size-6 bg-red-400/90" />
         ) : status === "success" ? (
-          <div className="size-6 bg-green-500/90" />
+          <div className="size-6 bg-green-400/90" />
         ) : (
           <button
             aria-label="Abort mission"
