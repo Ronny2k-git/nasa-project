@@ -15,7 +15,11 @@ export type InfoCardProps = ComponentPropsWithRef<"div"> & {
 
 export function InfoCard({ title, text, textColor, ...props }: InfoCardProps) {
   return (
-    <Card className="w-full p-3" cornerBorders={false} {...props}>
+    <Card
+      className="w-full p-4 bg-transparent"
+      cornerBorders={false}
+      {...props}
+    >
       <span className="text-xs text-cyan-muted font-mono uppercase whitespace-nowrap">
         {title}
       </span>

@@ -37,10 +37,10 @@ export default function Launch() {
   };
 
   return (
-    <div className="flex w-full h-full justify-center px-4 py-8 sm:px-8">
-      <div className="flex flex-col w-full max-w-3xl gap-8 text-base sm:text-lg">
+    <div className="flex w-full h-full">
+      <div className="flex flex-col w-full gap-12 pb-8">
         {/* Info Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4">
+        <div className="flex">
           {launchInfoCards.map((item, i) => (
             <InfoCard
               key={i}
@@ -51,101 +51,103 @@ export default function Launch() {
           ))}
         </div>
 
-        {/* Title */}
-        <h1 className="font-extrabold text-white/85 text-2xl sm:text-4xl sm:max-w-[27.2rem] font-heading leading-10">
-          Schedule a <span className="text-cyber-cyan-text">Launch</span> to
-          Kepler Exoplanets.
-        </h1>
+        <section className="flex flex-col w-full max-w-4xl mx-auto text-base sm:text-lg gap-8 px-4 md:px-8">
+          {/* Title */}
+          <h1 className="font-extrabold text-white text-2xl sm:text-4xl sm:max-w-[27.2rem] font-heading leading-10">
+            Schedule a <span className="text-cyber-cyan-text">Launch</span> to
+            Kepler Exoplanets.
+          </h1>
 
-        <Divider variant="thick" />
+          <Divider variant="thick" />
 
-        <div className="flex flex-col gap-4">
-          {/* Eligibility Criteria  */}
-          <Card className="gap-4 sm:gap-6 p-4 sm:p-6 text-cyber-cyan-text">
-            <Divider variant="label" label="Eligibility Criteria" />
+          <div className="flex flex-col gap-4">
+            {/* Eligibility Criteria  */}
+            <Card className="gap-4 sm:gap-6 p-4 sm:p-6 text-cyber-cyan-text">
+              <Divider variant="label" label="Eligibility Criteria" />
 
-            <h2 className="text-white-light">
-              Only confirmed planets matching the following criteria are
-              available for the earliest scheduled missions:
-            </h2>
+              <h2 className="text-white-light">
+                Only confirmed planets matching the following criteria are
+                available for the earliest scheduled missions:
+              </h2>
 
-            <div className="flex flex-col gap-2">
-              {eligibilityPlanets.map((planet, i) => (
-                <div
-                  key={i}
-                  className="bg-secondary-card flex gap-2 p-2 text-sm sm:text-base text-white-light  border-l-2 border-l-cyber-cyan-text "
+              <div className="flex flex-col gap-2">
+                {eligibilityPlanets.map((planet, i) => (
+                  <div
+                    key={i}
+                    className="bg-secondary-card flex gap-2 p-2 text-sm sm:text-base text-white-light  border-l-2 border-l-cyber-cyan-text "
+                  >
+                    <span className="text-cyan-muted">0{planet.id}</span>
+                    <p>{planet.description}</p>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            {/* Card Form */}
+            <Card className="gap-4 sm:gap-6 p-4 sm:p-6 text-cyber-cyan-text ">
+              <Divider variant="label" label="Mission Parameters" />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <Input
+                  inputClassName="h-10"
+                  type="date"
+                  label="● Launch Date"
+                  required={true}
+                />
+
+                <Input
+                  inputClassName="h-10"
+                  type="text"
+                  label="● Mission Name"
+                  required={true}
+                  placeholder="Enter mission name"
+                />
+
+                <Input
+                  inputClassName="h-10"
+                  type="text"
+                  defaultValue={"Explorer IS1"}
+                  label="● Rocket System"
+                />
+
+                <Selector
+                  className="h-10"
+                  label="● Destination Exoplanet"
+                  required={true}
                 >
-                  <span className="text-cyan-muted">0{planet.id}</span>
-                  <p>{planet.description}</p>
-                </div>
-              ))}
-            </div>
-          </Card>
+                  <option value="">Exoplanets</option>
+                  <option value="">Test</option>
+                </Selector>
+              </div>
 
-          {/* Card Form */}
-          <Card className="gap-4 sm:gap-6 p-4 sm:p-6 text-cyber-cyan-text ">
-            <Divider variant="label" label="Mission Parameters" />
+              <Divider />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              <Input
-                inputClassName="h-10"
-                type="date"
-                label="● Launch Date"
-                required={true}
-              />
+              <div className="flex w-full max-sm:flex-col gap-4 justify-between">
+                <p className="text-xs max-w-[15rem] text-cyan-muted">
+                  All fields marked{" "}
+                  <span className="text-orange-300 px-1 font-mono tracking-tighter">
+                    REQ
+                  </span>{" "}
+                  are mandatory. Mission will be queued for director
+                  authorization upon submission.
+                </p>
 
-              <Input
-                inputClassName="h-10"
-                type="text"
-                label="● Mission Name"
-                required={true}
-                placeholder="Enter mission name"
-              />
-
-              <Input
-                inputClassName="h-10"
-                type="text"
-                defaultValue={"Explorer IS1"}
-                label="● Rocket System"
-              />
-
-              <Selector
-                className="h-10"
-                label="● Destination Exoplanet"
-                required={true}
-              >
-                <option value="">Exoplanets</option>
-                <option value="">Test</option>
-              </Selector>
-            </div>
+                <Button
+                  className={`sm:w-[14rem] py-2 gap-2 ${active ? "bg-green-500/30" : ""}`}
+                  onClick={(e) => handleClick(e)}
+                >
+                  Launch Mission <Check className="size-4" />
+                </Button>
+              </div>
+            </Card>
 
             <Divider />
 
-            <div className="flex w-full max-sm:flex-col gap-4 justify-between">
-              <p className="text-xs max-w-[15rem] text-cyan-muted">
-                All fields marked{" "}
-                <span className="text-orange-300 px-1 font-mono tracking-tighter">
-                  REQ
-                </span>{" "}
-                are mandatory. Mission will be queued for director authorization
-                upon submission.
-              </p>
-
-              <Button
-                className={`sm:w-[14rem] gap-2 ${active ? "bg-green-500/30" : ""}`}
-                onClick={(e) => handleClick(e)}
-              >
-                Launch Mission <Check className="size-4" />
-              </Button>
-            </div>
-          </Card>
-
-          <Divider />
-
-          <span className="text-xs max-sm:text-center text-cyan-muted">
-            NASA MISSION CONTROL · RESTRICTED ACCESS
-          </span>
-        </div>
+            <span className="text-xs max-sm:text-center text-cyan-muted">
+              NASA MISSION CONTROL · RESTRICTED ACCESS
+            </span>
+          </div>
+        </section>
       </div>
     </div>
   );

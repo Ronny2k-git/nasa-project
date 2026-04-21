@@ -21,6 +21,8 @@ export default function Upcoming() {
   // 3 CREATE A MODAL COMPONENT
   // 4 CREATE A CARD DIALOG TO CONFIRM THE MISSION LAUNCH
   // 5 CREATE OR IMPLEMENT ANIMATIONS FOR EVERY PAGE
+  // 6 IMPLEMENT AN ANIMATED BACKGROUND
+  // 7 FINISH THE WENSITE COLOR UPDATES
 
   return (
     <div className="flex w-full h-full justify-center px-4 py-8 sm:px-8">
