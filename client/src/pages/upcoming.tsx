@@ -20,15 +20,15 @@ export default function Upcoming() {
   //  THE FILTERS RETURN NOTHING
   // 3 CREATE A MODAL COMPONENT
   // 4 CREATE A CARD DIALOG TO CONFIRM THE MISSION LAUNCH
-  // 5 CREATE OR IMPLEMENT ANIMATIONS FOR EVERY PAGE
+  // 5 CREATE OR IMPLEMENT ANIMATIONS FOR EVERY PAGE (-Y using CSS)
   // 6 IMPLEMENT AN ANIMATED BACKGROUND
   // 7 FINISH THE WENSITE COLOR UPDATES
 
   return (
-    <div className="flex w-full h-full justify-center px-4 py-8 sm:px-8">
-      <div className="flex flex-col w-full max-w-3xl gap-8 text-base sm:text-lg">
+    <div className="flex w-full h-full">
+      <div className="flex flex-col w-full gap-12 pb-8">
         {/* Info Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4">
+        <div className="flex">
           {upcomingInfoCards.map((item, i) => (
             <InfoCard
               key={i}
@@ -39,72 +39,74 @@ export default function Upcoming() {
           ))}
         </div>
 
-        {/* Title */}
-        <h1 className="font-extrabold text-white/85 text-2xl sm:text-4xl font-heading leading-10">
-          Upcoming <span className="text-cyber-cyan-text">Missions</span>
-        </h1>
+        <section className="flex flex-col w-full max-w-4xl mx-auto text-base sm:text-lg gap-8 px-4 md:px-8">
+          {/* Title */}
+          <h1 className="font-extrabold text-white text-2xl sm:text-4xl font-heading leading-10">
+            Upcoming <span className="text-cyber-cyan-text">Missions</span>
+          </h1>
 
-        <Divider variant="thick" />
+          <Divider variant="thick" />
 
-        <section className="flex flex-col w-full gap-4">
-          <Card className="text-cyber-cyan-text">
-            <div className="flex max-sm:flex-col items-center gap-2 p-4 sm:p-6">
-              <SectionLabel>Launch Schedule</SectionLabel>
+          <div className="flex flex-col w-full gap-4">
+            <Card className="text-cyber-cyan-text">
+              <div className="flex max-sm:flex-col items-center gap-2 p-4 sm:p-6">
+                <SectionLabel>Launch Schedule</SectionLabel>
 
-              <Input
-                inputClassName="h-9"
-                wrapperClassName="w-full"
-                placeholder="Search mission, rocket, destination..."
-                defaultValue={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
+                <Input
+                  inputClassName="h-9"
+                  wrapperClassName="w-full"
+                  placeholder="Search mission, rocket, destination..."
+                  defaultValue={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
 
-              <div className="flex justify-center max-sm:w-full p-2 text-red-400/90 border border-red-400/50 bg-red-500/10">
-                <h3 className="flex items-center whitespace-nowrap text-xs uppercase">
-                  Click X to abort Mission
-                </h3>
+                <div className="flex justify-center max-sm:w-full p-2 text-red-400/90 border border-red-400/50 bg-red-500/10">
+                  <h3 className="flex items-center whitespace-nowrap text-xs uppercase">
+                    Click X to abort Mission
+                  </h3>
+                </div>
               </div>
-            </div>
 
-            <div className="w-full flex flex-col justify-center overflow-y-auto">
-              <table className="w-full text-base text-cyan-text-light min-w-[45rem]">
-                <thead className="bg-cyan-400/5 border-y text-cyber-cyan-text border-bg-border">
-                  <tr>
-                    <th className="p-2">No.</th>
-                    <th>Date</th>
-                    <th>Mission</th>
-                    <th>Rocket</th>
-                    <th>Destination</th>
-                    <th>Abort</th>
-                  </tr>
-                </thead>
+              <div className="w-full flex flex-col justify-center overflow-y-auto">
+                <table className="w-full text-base text-cyan-text-light min-w-[45rem]">
+                  <thead className="bg-cyan-400/5 border-y text-cyber-cyan-text border-bg-border">
+                    <tr>
+                      <th className="p-2">No.</th>
+                      <th>Date</th>
+                      <th>Mission</th>
+                      <th>Rocket</th>
+                      <th>Destination</th>
+                      <th>Abort</th>
+                    </tr>
+                  </thead>
 
-                <tbody>
-                  {searchedMissions.map((item, i) => (
-                    <MissionRowCard
-                      key={i}
-                      id={item.id}
-                      date={item.date}
-                      mission={item.mission}
-                      rocket={item.rocket}
-                      target={item.target}
-                      status="upcoming"
-                    />
-                  ))}
-                </tbody>
-              </table>
+                  <tbody>
+                    {searchedMissions.map((item, i) => (
+                      <MissionRowCard
+                        key={i}
+                        id={item.id}
+                        date={item.date}
+                        mission={item.mission}
+                        rocket={item.rocket}
+                        target={item.target}
+                        status="upcoming"
+                      />
+                    ))}
+                  </tbody>
+                </table>
 
-              <span className="text-xs p-3">
-                Showing {searchedMissions.length} missions
-              </span>
-            </div>
-          </Card>
+                <span className="text-xs p-3">
+                  Showing {searchedMissions.length} missions
+                </span>
+              </div>
+            </Card>
 
-          <Divider />
+            <Divider />
 
-          <span className="text-xs max-sm:text-center text-cyan-muted">
-            NASA MISSION CONTROL · RESTRICTED ACCESS
-          </span>
+            <span className="text-xs max-sm:text-center text-cyan-muted">
+              NASA MISSION CONTROL · RESTRICTED ACCESS
+            </span>
+          </div>
         </section>
       </div>
     </div>

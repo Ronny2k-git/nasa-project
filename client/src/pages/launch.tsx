@@ -1,21 +1,12 @@
 import { Check } from "lucide-react";
 import { InfoCard } from "../components";
-import { launchInfoCards, type LaunchData } from "../consts";
+import {
+  eligibilityPlanets,
+  launchInfoCards,
+  type LaunchData,
+} from "../consts";
 import { useClickFeedback } from "../hooks";
 import { Button, Card, Divider, Input, Selector } from "../ui/components";
-
-const eligibilityPlanets = [
-  {
-    id: 1,
-    description:
-      "Planetary radius < 1.6× Earth's radius — ensures terrestrial-class surface conditions.",
-  },
-  {
-    id: 2,
-    description:
-      "Effective stellar flux in range 0.36 – 1.11× Earth's value — conservative habitable zone boundary.",
-  },
-];
 
 export default function Launch() {
   const { active, trigger } = useClickFeedback({
@@ -74,10 +65,12 @@ export default function Launch() {
                 {eligibilityPlanets.map((planet, i) => (
                   <div
                     key={i}
-                    className="bg-secondary-card flex gap-2 p-2 text-sm sm:text-base text-white-light  border-l-2 border-l-cyber-cyan-text "
+                    className="flex items-center bg-secondary-card gap-2 p-2 text-sm  border-l-2 border-l-cyber-cyan-text "
                   >
-                    <span className="text-cyan-muted">0{planet.id}</span>
-                    <p>{planet.description}</p>
+                    <span className="text-cyber-cyan-text text-xs">
+                      {String(planet.id).padStart(2, "0")}
+                    </span>
+                    <p className=" text-white-light">{planet.description}</p>
                   </div>
                 ))}
               </div>
