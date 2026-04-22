@@ -6,5 +6,6 @@ export * from "./layout/Footer";
 export * from "./layout/Header";
 export * from "./Logo";
 export * from "./MissionRowCard";
+export * from "./MissionStatusBar";
 export * from "./SectionLabel";
 export * from "./Stars";

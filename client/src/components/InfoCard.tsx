@@ -3,7 +3,7 @@ import { Card } from "./ui";
 
 export type textColor =
   | "text-cyber-cyan-text"
-  | "text-white/85"
+  | "text-white"
   | "text-green-400"
   | "text-orange-300";
 
@@ -16,11 +16,11 @@ export type InfoCardProps = ComponentPropsWithRef<"div"> & {
 export function InfoCard({ title, text, textColor, ...props }: InfoCardProps) {
   return (
     <Card
-      className="w-full p-4 bg-transparent"
+      className="w-full p-4 bg-transparent font-body"
       cornerBorders={false}
       {...props}
     >
-      <span className="text-xs text-cyan-muted font-mono uppercase whitespace-nowrap">
+      <span className="text-xs text-cyan-muted uppercase whitespace-nowrap">
         {title}
       </span>
       <span

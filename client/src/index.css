@@ -25,6 +25,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Share Tech Mono";
+  src: url("/fonts/Share-Techmono-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
@@ -33,6 +40,7 @@
 
 @theme {
   --font-heading: "Orbitron", sans-serif;
+  --font-body: "Share Tech Mono", monospace;
 
   --color-background-color: rgba(2, 8, 16);
   --color-light-background: rgba(3, 8, 32, 0.5);

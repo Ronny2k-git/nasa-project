@@ -45,7 +45,7 @@ export const filters: filterProps = [
   {
     value: "aborted",
     icon: ShieldX,
-    iconColor: "text-red-400",
+    iconColor: "text-red-500",
     label: "Aborted",
   },
 ];

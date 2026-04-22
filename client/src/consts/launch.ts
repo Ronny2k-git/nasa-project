@@ -2,7 +2,7 @@ import type { CardConfig } from "../types";
 
 export type LaunchData = {
   planets: number;
-  nextWindow: string;
+  nextMission: string;
   activeMissions: number;
   status: string;
 };
@@ -14,14 +14,14 @@ export const launchInfoCards: CardConfig<LaunchData>[] = [
     textColor: "text-cyber-cyan-text",
   },
   {
-    title: "Next Launch Window",
-    key: "nextWindow",
-    textColor: "text-white/85",
-  },
-  {
     title: "Active Missions",
     key: "activeMissions",
     textColor: "text-orange-300",
+  },
+  {
+    title: "Next Mission In",
+    key: "nextMission",
+    textColor: "text-white",
   },
   { title: "Fleet Status", key: "status", textColor: "text-green-400" },
 ];

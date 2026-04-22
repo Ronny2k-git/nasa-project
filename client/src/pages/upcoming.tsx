@@ -1,4 +1,9 @@
-import { InfoCard, MissionRowCard, SectionLabel } from "../components";
+import {
+  EmptyBanner,
+  InfoCard,
+  MissionRowCard,
+  SectionLabel,
+} from "../components";
 import { Card, Divider, Input } from "../components/ui";
 import { upcomingInfoCards, type UpcomingData } from "../consts";
 import { useSearchMissions } from "../hooks";
@@ -7,8 +12,8 @@ export default function Upcoming() {
   const { searchedMissions, search, setSearch } = useSearchMissions();
 
   const infoUpcomingCardData: UpcomingData = {
-    launchedMissions: 6,
-    nextWindow: "May 13, 2026",
+    launchedMissions: 10,
+    nextMission: "May 13, 2026",
     rocketsReady: 3,
     status: "Scheduling",
   };
@@ -49,12 +54,15 @@ export default function Upcoming() {
                   onChange={(e) => setSearch(e.target.value)}
                 />
 
-                <div className="flex justify-center max-sm:w-full p-2 text-red-400/90 border border-red-400/50 bg-red-500/10">
-                  <h3 className="flex items-center whitespace-nowrap text-xs uppercase">
-                    Click X to abort Mission
+                <div className="flex justify-center max-sm:w-full p-2 text-red-500/80 border border-red-500/50 bg-red-500/10">
+                  <h3 className="font-heading font-semibold whitespace-nowrap text-xs">
+                    X Abort the Mission
                   </h3>
                 </div>
               </div>
+
+              <EmptyBanner />
+              {/* {FINISH THIS COMPONENT AFTER LUNCH} */}
 
               {/* Table */}
               <div className="w-full flex flex-col justify-center overflow-y-auto">
@@ -84,7 +92,6 @@ export default function Upcoming() {
                     ))}
                   </tbody>
                 </table>
-
                 <span className="text-xs p-3">
                   Showing {searchedMissions.length} missions
                 </span>
@@ -93,7 +100,7 @@ export default function Upcoming() {
 
             <Divider />
 
-            <span className="text-xs max-sm:text-center text-cyan-muted">
+            <span className="text-xs max-sm:text-center font-body text-cyan-muted">
               R2K MISSION CONTROL · RESTRICTED ACCESS
             </span>
           </div>

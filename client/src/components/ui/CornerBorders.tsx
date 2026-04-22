@@ -23,11 +23,11 @@ export function CornerBorders({ color, size = "md" }: CornerBordersProps) {
   return (
     <>
       <span
-        className={`absolute top-0 ${sizeClass} left-0 border-t-2 border-l-2 ${color}`}
+        className={`absolute z-1 top-0 ${sizeClass} left-0 border-t-2 border-l-2 ${color}`}
       />
 
       <span
-        className={`absolute -bottom-0 ${sizeClass} right-0 border-b-2 border-r-2 ${color}`}
+        className={`absolute z-1 -bottom-0 ${sizeClass} right-0 border-b-2 border-r-2 ${color}`}
       />
     </>
   );

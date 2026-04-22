@@ -9,7 +9,7 @@ import {
 import { useClickFeedback } from "../hooks";
 
 export default function Launch() {
-  const { active, trigger } = useClickFeedback({
+  const { active, trigger: audioTrigger } = useClickFeedback({
     audioPath: "/sound/warning.mp3",
     duration: 100,
   });
@@ -17,12 +17,12 @@ export default function Launch() {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
 
-    trigger();
+    audioTrigger();
   };
 
   const infoLaunchCardData: LaunchData = {
     planets: 8,
-    nextWindow: "Apr 20, 2026",
+    nextMission: "Apr 20, 2026",
     activeMissions: 3,
     status: "Operational",
   };
@@ -143,7 +143,7 @@ export default function Launch() {
 
             <Divider />
 
-            <span className="text-xs max-sm:text-center text-cyan-muted">
+            <span className="text-xs max-sm:text-center font-body text-cyan-muted">
               R2K MISSION CONTROL · RESTRICTED ACCESS
             </span>
           </div>

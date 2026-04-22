@@ -1,4 +1,9 @@
-import { InfoCard, MissionRowCard, SectionLabel } from "../components";
+import {
+  InfoCard,
+  MissionRowCard,
+  MissionStatusBar,
+  SectionLabel,
+} from "../components";
 import { Button, Card, Divider, Input } from "../components/ui";
 import { filters, historyInfoCards, type HistoryData } from "../consts";
 import { useFilterMissions, useSearchMissions } from "../hooks";
@@ -111,12 +116,28 @@ export default function History() {
                 <span className="text-xs p-3">
                   Showing {filteredMissions.length} missions
                 </span>
+
+                <div className="grid grid-cols-2">
+                  <MissionStatusBar
+                    title="Mission success rate"
+                    status="success"
+                    missions={14}
+                    totalMissions={20}
+                  />
+
+                  <MissionStatusBar
+                    title="Abort rate"
+                    status="aborted"
+                    missions={6}
+                    totalMissions={20}
+                  />
+                </div>
               </div>
             </Card>
 
             <Divider />
 
-            <span className="text-xs max-sm:text-center text-cyan-muted">
+            <span className="text-xs max-sm:text-center font-body text-cyan-muted">
               R2K MISSION CONTROL · RESTRICTED ACCESS
             </span>
           </div>

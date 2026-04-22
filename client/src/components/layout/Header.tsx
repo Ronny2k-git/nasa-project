@@ -30,11 +30,12 @@ export function Header() {
         <div className="flex h-full w-full items-center p-2 gap-4 border-b border-b-bg-border ">
           <Logo />
 
-          <div className="h-full flex flex-col justify-center md:pr-4 md:border-r-2 border-bg-border ">
-            <span className="text-cyber-cyan-text text-2xl font-heading font-extrabold">
+          <div className="h-full flex flex-col justify-center md:pr-4 md:border-r-2 border-bg-border">
+            <span className="text-cyber-cyan-text text-2xl font-heading font-black">
               R2K
             </span>
-            <span className="text-xs text-cyan-muted uppercase whitespace-nowrap">
+
+            <span className="text-sm text-cyan-muted font-body uppercase whitespace-nowrap">
               Mission Control
             </span>
           </div>

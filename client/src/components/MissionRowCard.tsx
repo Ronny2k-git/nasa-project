@@ -40,10 +40,10 @@ export function MissionRowCard({
         ) : (
           <button
             aria-label="Abort mission"
-            className="size-6 border border-red-400/50 bg-red-500/10 font-semibold hover:border-red-400/80 
+            className="size-6 border border-red-500/50 bg-red-500/10 font-semibold hover:border-red-500/80 
           hover:bg-red-500/15"
           >
-            <span className="text-xs text-red-400">X</span>
+            <span className="text-xs text-red-500">X</span>
           </button>
         )}
       </td>
