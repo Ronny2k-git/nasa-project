@@ -1,9 +1,4 @@
-import {
-  EmptyBanner,
-  InfoCard,
-  MissionRowCard,
-  SectionLabel,
-} from "../components";
+import { InfoCard, MissionRowCard, SectionLabel } from "../components";
 import { Card, Divider, Input } from "../components/ui";
 import { upcomingInfoCards, type UpcomingData } from "../consts";
 import { useSearchMissions } from "../hooks";
@@ -61,11 +56,11 @@ export default function Upcoming() {
                 </div>
               </div>
 
-              <EmptyBanner />
+              {/* <EmptyBanner /> */}
               {/* {FINISH THIS COMPONENT AFTER LUNCH} */}
 
               {/* Table */}
-              <div className="w-full flex flex-col justify-center overflow-y-auto">
+              <div className="w-full flex flex-col justify-center overflow-y-auto gap-4">
                 <table className="w-full text-base text-cyan-text-light min-w-[43.5rem]">
                   <thead className="bg-cyan-400/5 border-y text-cyber-cyan-text border-bg-border">
                     <tr>
@@ -78,21 +73,27 @@ export default function Upcoming() {
                     </tr>
                   </thead>
 
-                  <tbody>
-                    {searchedMissions.map((item, i) => (
-                      <MissionRowCard
-                        key={i}
-                        id={item.id}
-                        date={item.date}
-                        mission={item.mission}
-                        rocket={item.rocket}
-                        target={item.target}
-                        status="upcoming"
-                      />
-                    ))}
-                  </tbody>
+                  {searchedMissions.length > 0 && (
+                    <tbody>
+                      {searchedMissions.map((item, i) => (
+                        <MissionRowCard
+                          key={i}
+                          id={item.id}
+                          date={item.date}
+                          mission={item.mission}
+                          rocket={item.rocket}
+                          target={item.target}
+                          status="upcoming"
+                        />
+                      ))}
+                    </tbody>
+                  )}
                 </table>
-                <span className="text-xs p-3">
+
+                {!searchedMissions ||
+                  (searchedMissions.length === 0 && <div>TESTTTT</div>)}
+
+                <span className="text-xs px-4">
                   Showing {searchedMissions.length} missions
                 </span>
               </div>

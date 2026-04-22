@@ -85,7 +85,7 @@ export default function History() {
               </div>
 
               {/* Table */}
-              <div className="w-full flex flex-col overflow-y-auto">
+              <div className="w-full flex flex-col overflow-y-auto gap-4">
                 <table className="w-full text-base text-cyan-text-light min-w-[43.5rem]">
                   <thead className="bg-cyan-400/5 border-y text-cyber-cyan-text border-bg-border">
                     <tr>
@@ -98,22 +98,27 @@ export default function History() {
                     </tr>
                   </thead>
 
-                  <tbody>
-                    {filteredMissions.map((item, i) => (
-                      <MissionRowCard
-                        key={i}
-                        id={item.id}
-                        date={item.date}
-                        mission={item.mission}
-                        rocket={item.rocket}
-                        target={item.target}
-                        status={item.status}
-                      />
-                    ))}
-                  </tbody>
+                  {filteredMissions.length > 0 && (
+                    <tbody>
+                      {filteredMissions.map((item, i) => (
+                        <MissionRowCard
+                          key={i}
+                          id={item.id}
+                          date={item.date}
+                          mission={item.mission}
+                          rocket={item.rocket}
+                          target={item.target}
+                          status={item.status}
+                        />
+                      ))}
+                    </tbody>
+                  )}
                 </table>
 
-                <span className="text-xs p-3">
+                {!filteredMissions ||
+                  (filteredMissions.length === 0 && <div>TESTTT</div>)}
+
+                <span className="text-xs px-4">
                   Showing {filteredMissions.length} missions
                 </span>
 

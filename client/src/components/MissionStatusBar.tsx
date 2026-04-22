@@ -1,3 +1,4 @@
+import { calculatePercentage } from "../utils";
 import { Card } from "./ui";
 
 const statusColor = {
@@ -18,8 +19,7 @@ export function MissionStatusBar({
   missions,
   totalMissions,
 }: MissionStatusBarProps) {
-  const calculatedPercentage =
-    totalMissions === 0 ? 0 : Math.round((missions / totalMissions) * 100);
+  const percentage = calculatePercentage(missions, totalMissions);
 
   return (
     <Card
@@ -32,7 +32,7 @@ export function MissionStatusBar({
       <div className="bg-bg-border h-1">
         <div
           className={` h-full bg-linear-to-r ${statusColor[status]} `}
-          style={{ width: `${calculatedPercentage}%` }}
+          style={{ width: `${percentage}%` }}
         />
       </div>
 
@@ -42,7 +42,7 @@ export function MissionStatusBar({
             ${status === "success" ? "text-green-500" : "text-red-500"}
             `}
         >
-          {calculatedPercentage}%
+          {percentage}%
         </span>
 
         <div className="">
