@@ -9,7 +9,7 @@ import {
 import { useClickFeedback } from "../hooks";
 
 export default function Launch() {
-  const { active, trigger: audioTrigger } = useClickFeedback({
+  const { trigger: audioTrigger } = useClickFeedback({
     audioPath: "/sound/warning.mp3",
     duration: 100,
   });
@@ -133,8 +133,9 @@ export default function Launch() {
                 </p>
 
                 <Button
-                  className={`sm:w-[14rem] py-2 gap-2 ${active ? "bg-green-500/20" : ""}`}
+                  className="sm:w-[14rem] py-2 gap-2"
                   onClick={(e) => handleClick(e)}
+                  variant="success"
                 >
                   Launch Mission <Check className="size-4" />
                 </Button>

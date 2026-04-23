@@ -1,4 +1,4 @@
-import type { InfoCardProps } from "../components";
+import type { MissionInfoCardProps } from "../components/missions";
 
 export type Mission = {
   id: number;
@@ -12,7 +12,7 @@ export type Mission = {
 export type CardConfig<T> = {
   title: string;
   key: keyof T;
-  textColor: InfoCardProps["textColor"];
+  textColor: MissionInfoCardProps["textColor"];
 };
 
 export type FilterType = "all" | "success" | "aborted";

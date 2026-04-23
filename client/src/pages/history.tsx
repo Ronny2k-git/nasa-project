@@ -1,4 +1,5 @@
-import { EmptyBanner, SectionLabel } from "../components";
+import { useNavigate } from "react-router-dom";
+import { EmptyBanner, Pagination, SectionLabel } from "../components";
 import {
   MissionInfoCard,
   MissionRowCard,
@@ -13,6 +14,8 @@ export default function History() {
   const { filteredMissions, filter, setFilter } =
     useFilterMissions(searchedMissions);
 
+  const navigate = useNavigate();
+
   const infoHistoryCardData: HistoryData = {
     totalLaunches: 20,
     successfull: 85,
@@ -24,16 +27,15 @@ export default function History() {
 
   //   1 CREATE A PAGINATION COMPONENT.
 
-  //   2 CREATE A BANNER TO BE USED WHEN THE TABLE IS EMPTY OR WHEN.
-  //    THE FILTERS RETURN NOTHING
+  //   2 CREATE A MODAL COMPONENT.
 
-  //   3 CREATE A MODAL COMPONENT.
+  //   3 CREATE A CARD DIALOG TO CONFIRM THE MISSION LAUNCH.
 
-  //   4 CREATE A CARD DIALOG TO CONFIRM THE MISSION LAUNCH.
+  //   4 CREATE OR IMPLEMENT ANIMATIONS FOR EVERY PAGE (-Y using CSS).
 
-  //   5 CREATE OR IMPLEMENT ANIMATIONS FOR EVERY PAGE (-Y using CSS).
+  //   5 CREATE A COUNTDOWN COMPONENT.
 
-  //   6 CREATE A COUNTDOWN COMPONENT.
+  //   6 FIND OUT A WAY TO UPDATE THE URL WHEN THE USER FILTERS SOMETHING
 
   return (
     <div className="flex w-full h-full">
@@ -64,10 +66,10 @@ export default function History() {
                 <SectionLabel>Launch archive</SectionLabel>
 
                 <Input
+                  value={search}
                   inputClassName="h-9"
                   wrapperClassName="w-full"
                   placeholder="Search mission, rocket, customer..."
-                  defaultValue={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
 
@@ -77,7 +79,7 @@ export default function History() {
                     <Button
                       key={`${item.value}_${i}`}
                       className={`text-xs uppercase gap-1 h-9`}
-                      variant={filter === item.value ? item.value : "ghost"}
+                      variant={filter === item.value ? item.variant : "ghost"}
                       onClick={() => setFilter(item.value)}
                     >
                       {item.icon && (
@@ -123,11 +125,19 @@ export default function History() {
 
               {/* Display this banner when the table is empty */}
               {filteredMissions.length === 0 && (
-                <div className="flex flex-col gap-6 m-4">
+                <div className="flex flex-col gap-6 m-4 sm:m-6">
                   <EmptyBanner
+                    key="history-empty-banner"
                     variant="cyan"
                     primaryActionVariant="ghost"
-                    secondaryActionVariant="all"
+                    secondaryActionVariant="primary"
+                    onPrimaryAction={() => {
+                      setSearch("");
+                      setFilter("all");
+                    }}
+                    onSecondaryAction={() => {
+                      navigate("/");
+                    }}
                   />
 
                   <Divider variant="line" />
@@ -140,7 +150,11 @@ export default function History() {
                   Showing {filteredMissions.length} missions
                 </span>
 
-                <span className="text-sm">PAGINATION WILL BE HERE</span>
+                <Pagination
+                  page={1}
+                  totalPages={3}
+                  onChange={() => console.log("test")}
+                />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2">

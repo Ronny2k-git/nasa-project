@@ -1,4 +1,4 @@
-import { Rocket } from "lucide-react";
+import { Rocket, RotateCcw } from "lucide-react";
 import { energyVariants, type EnergyVariant } from "../consts";
 import { Button, Card, Divider, EnergyBadge, type ButtonProps } from "./ui";
 
@@ -6,16 +6,24 @@ export type EmptyBannerProps = {
   variant?: EnergyVariant;
   primaryActionVariant: ButtonProps["variant"];
   secondaryActionVariant: ButtonProps["variant"];
+
+  onPrimaryAction?: () => void;
+  onSecondaryAction?: () => void;
 };
 
 export function EmptyBanner({
   variant = "cyan",
   primaryActionVariant,
   secondaryActionVariant,
+  onPrimaryAction,
+  onSecondaryAction,
 }: EmptyBannerProps) {
   return (
-    <Card className="p-8 items-center gap-8" cornerBorders={false}>
-      <EnergyBadge icon={<Rocket />} variant={variant} />
+    <Card
+      className="bg-card-background-light/50 p-4 sm:p-8 items-center gap-8"
+      cornerBorders={true}
+    >
+      <EnergyBadge className="mt-4" icon={<Rocket />} variant={variant} />
 
       <div className="flex flex-col text-center items-center gap-2">
         <span className="text-xs text-cyan-muted uppercase">
@@ -36,12 +44,22 @@ export function EmptyBanner({
       <Divider />
 
       {/* Action */}
-      <div className="flex gap-4">
-        <Button className="py-2" variant={primaryActionVariant}>
+      <div className="flex max-sm:flex-col max-sm:w-full gap-4">
+        <Button
+          className="py-2 text-base"
+          variant={primaryActionVariant}
+          iconLeft={<RotateCcw className="size-5" />}
+          onClick={onPrimaryAction}
+        >
           Clear Filters
         </Button>
 
-        <Button className="py-2" variant={secondaryActionVariant}>
+        <Button
+          className="py-2 text-base"
+          variant={secondaryActionVariant}
+          iconLeft={<Rocket className="size-5" />}
+          onClick={onSecondaryAction}
+        >
           Launch a Mission
         </Button>
       </div>

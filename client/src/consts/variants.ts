@@ -5,7 +5,7 @@ export const energyVariants = {
   },
   orange: {
     text: "text-orange-300",
-    badge: "bg-orange-300/20 border-orange-300",
+    badge: "bg-orange-300/10 border-orange-300",
   },
 } as const;
 

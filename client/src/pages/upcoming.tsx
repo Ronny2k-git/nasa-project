@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { EmptyBanner, SectionLabel } from "../components";
 import { MissionInfoCard, MissionRowCard } from "../components/missions";
 import { Card, Divider, Input } from "../components/ui";
@@ -6,6 +7,8 @@ import { useSearchMissions } from "../hooks";
 
 export default function Upcoming() {
   const { searchedMissions, search, setSearch } = useSearchMissions();
+
+  const navigate = useNavigate();
 
   const infoUpcomingCardData: UpcomingData = {
     launchedMissions: 10,
@@ -43,10 +46,10 @@ export default function Upcoming() {
                 <SectionLabel>Launch Schedule</SectionLabel>
 
                 <Input
+                  value={search}
                   inputClassName="h-9"
                   wrapperClassName="w-full"
                   placeholder="Search mission, rocket, destination..."
-                  defaultValue={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
 
@@ -90,11 +93,16 @@ export default function Upcoming() {
 
               {/* Display this banner when the table is empty */}
               {searchedMissions.length === 0 && (
-                <div className="flex flex-col gap-6 m-4">
+                <div className="flex flex-col gap-6 m-4 sm:m-6">
                   <EmptyBanner
+                    key="upcoming-empty-banner"
                     variant="orange"
                     primaryActionVariant="ghost"
                     secondaryActionVariant="waiting"
+                    onPrimaryAction={() => setSearch("")}
+                    onSecondaryAction={() => {
+                      navigate("/");
+                    }}
                   />
 
                   <Divider variant="line" />
