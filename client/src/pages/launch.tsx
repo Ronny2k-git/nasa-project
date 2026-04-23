@@ -133,7 +133,7 @@ export default function Launch() {
                 </p>
 
                 <Button
-                  className={`sm:w-[14rem] py-2 gap-2 ${active ? "bg-green-500/30" : ""}`}
+                  className={`sm:w-[14rem] py-2 gap-2 ${active ? "bg-green-500/20" : ""}`}
                   onClick={(e) => handleClick(e)}
                 >
                   Launch Mission <Check className="size-4" />

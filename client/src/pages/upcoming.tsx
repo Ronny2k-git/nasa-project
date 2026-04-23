@@ -91,7 +91,11 @@ export default function Upcoming() {
               {/* Display this banner when the table is empty */}
               {searchedMissions.length === 0 && (
                 <div className="flex flex-col gap-6 m-4">
-                  <EmptyBanner />
+                  <EmptyBanner
+                    variant="orange"
+                    primaryActionVariant="ghost"
+                    secondaryActionVariant="waiting"
+                  />
 
                   <Divider variant="line" />
                 </div>

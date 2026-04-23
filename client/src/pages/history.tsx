@@ -124,7 +124,11 @@ export default function History() {
               {/* Display this banner when the table is empty */}
               {filteredMissions.length === 0 && (
                 <div className="flex flex-col gap-6 m-4">
-                  <EmptyBanner />
+                  <EmptyBanner
+                    variant="cyan"
+                    primaryActionVariant="ghost"
+                    secondaryActionVariant="all"
+                  />
 
                   <Divider variant="line" />
                 </div>
