@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import {
   Card,
+  Divider,
   EnergyBadge,
   Modal,
   type CardVariants,
@@ -15,6 +16,7 @@ export interface DialogCardProps extends Omit<ModalProps, "children"> {
   title: string;
   description: string;
   mission: Mission;
+  actions?: ReactNode;
 }
 
 const variantStyles: Record<CardVariants, { energy: EnergyVariant }> = {
@@ -32,6 +34,7 @@ export function DialogCard({
   title,
   description,
   mission,
+  actions,
   className,
 }: DialogCardProps) {
   const energy = variantStyles[variant].energy;
@@ -50,7 +53,7 @@ export function DialogCard({
       variant={variant}
       open={open}
       onClose={onClose}
-      className={twMerge("items-center justify-center p-8", className)}
+      className={twMerge("items-center justify-center p-4 sm:p-8", className)}
     >
       <div className="flex flex-col w-full items-center gap-8">
         <EnergyBadge className="mt-4" icon={iconBadge} variant={energy} />
@@ -76,7 +79,9 @@ export function DialogCard({
               variant={variant}
               cornerBorders={false}
             >
-              <span className="text-[10px] text-red-500/70">{m.label}</span>
+              <span className={`text-[10px] ${energyVariants[energy].text}`}>
+                {m.label}
+              </span>
 
               <span className="text-white/80 text-sm -tracking-wide">
                 {m.value}
@@ -84,6 +89,11 @@ export function DialogCard({
             </Card>
           ))}
         </div>
+
+        <Divider variant={energy} type="line" />
+
+        {/* Actions */}
+        {actions}
       </div>
     </Modal>
   );

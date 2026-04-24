@@ -27,17 +27,16 @@ export default function History() {
 
   //  TO DO LATER:
 
-  //   1 CREATE A MODAL COMPONENT.
+  //   1 CREATE A COUNTDOWN COMPONENT.
 
-  //   2 CREATE A CARD DIALOG TO CONFIRM THE MISSION LAUNCH.
+  //   2 IMPLEMENT THE ERROR MESSAGES IN THE INPUT COMPONENT
 
-  //   LATER -----------------
+  //   3 CREATE A FUNCTION TO GET ELEMENTS BY ID AND SCROLL TO TOP OF THE PAGE.
 
   //   4 CREATE OR IMPLEMENT ANIMATIONS FOR EVERY PAGE (-Y using CSS).
 
-  //   5 CREATE A COUNTDOWN COMPONENT.
-
-  //   6 FIND OUT A WAY TO UPDATE THE URL WHEN THE USER FILTERS SOMETHING.
+  //   5 FIND OUT A WAY TO UPDATE THE URL WHEN THE USER FILTERS SOMETHING.\
+  //   IMPLEMENT WHEN THE USER STARTS A LAUNCH AND NAVIGATE TO THE UPCOMING PAGE
 
   return (
     <div className="flex flex-col w-full gap-12 pb-8">
@@ -59,7 +58,7 @@ export default function History() {
           Mission <span className="text-cyber-cyan-text">History</span>
         </h1>
 
-        <Divider variant="thick" />
+        <Divider type="thick" />
 
         <div className="flex flex-col gap-4">
           <Card className="text-cyber-cyan-text">
@@ -141,7 +140,7 @@ export default function History() {
                   }}
                 />
 
-                <Divider variant="line" />
+                <Divider type="line" />
               </div>
             )}
 

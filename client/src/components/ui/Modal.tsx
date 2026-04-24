@@ -43,7 +43,7 @@ export function Modal({
             aria-modal="true"
             variant={variant}
             className={twMerge(
-              "gap-4 fixed z-50 p-4 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 ",
+              "w-[calc(100%-1.5rem)] gap-4 fixed z-50 p-4 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 ",
               className,
             )}
             onClick={(e) => e.stopPropagation()}

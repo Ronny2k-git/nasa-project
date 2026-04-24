@@ -5,8 +5,8 @@ import { CornerBorders, type BorderColors } from "./CornerBorders";
 const cardVariants = {
   primary: "bg-card-background border border-bg-border",
   secondary: "border border-bg-border",
-  success: "bg-green-500/10 border ",
-  warning: "bg-red-500/10 border border-red-500/30 ",
+  success: "bg-green-muted border border-green-500/25 ",
+  warning: "bg-red-dark border border-red-500/25 ",
 };
 
 const borderColorMap: Record<CardVariants, BorderColors> = {

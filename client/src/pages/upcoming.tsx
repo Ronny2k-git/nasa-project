@@ -1,20 +1,33 @@
-import { X } from "lucide-react";
+import { CornerUpLeft, X } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { EmptyBanner, Pagination, SectionLabel } from "../components";
 import { MissionInfoCard, MissionRowCard } from "../components/missions";
-import { Card, DialogCard, Divider, Input } from "../components/ui";
+import { Button, Card, DialogCard, Divider, Input } from "../components/ui";
 import { upcomingInfoCards, type UpcomingData } from "../consts";
-import { useSearchMissions } from "../hooks";
+import { useClickFeedback, useSearchMissions } from "../hooks";
 import type { Mission } from "../types";
 
 export default function Upcoming() {
   const [page, setPage] = useState(1);
-  const [openModal, setOpenModal] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
   const [selectedMission, setSelectedMission] = useState<Mission>();
   const { searchedMissions, search, setSearch } = useSearchMissions();
 
+  const { trigger: audioTrigger } = useClickFeedback({
+    audioPath: "/sound/abort.mp3",
+    duration: 100,
+  });
+
   const navigate = useNavigate();
+
+  // Function used to abort a selected mission.
+  const handleAbortMission = (e: React.MouseEvent) => {
+    e.preventDefault();
+    audioTrigger();
+
+    setOpenDialog(false);
+  };
 
   const infoUpcomingCardData: UpcomingData = {
     launchedMissions: 10,
@@ -44,7 +57,7 @@ export default function Upcoming() {
             Upcoming <span className="text-cyber-cyan-text">Missions</span>
           </h1>
 
-          <Divider variant="thick" />
+          <Divider type="thick" />
 
           <div className="flex flex-col w-full gap-4">
             <Card className="text-cyber-cyan-text">
@@ -92,7 +105,7 @@ export default function Upcoming() {
                           status="upcoming"
                           onAbort={(mission) => {
                             setSelectedMission(mission);
-                            setOpenModal(true);
+                            setOpenDialog(true);
                           }}
                         />
                       ))}
@@ -114,7 +127,7 @@ export default function Upcoming() {
                     }}
                   />
 
-                  <Divider variant="line" />
+                  <Divider type="line" />
                 </div>
               )}
 
@@ -144,16 +157,38 @@ export default function Upcoming() {
       {/* Dialog card */}
       {selectedMission && (
         <DialogCard
-          className="max-w-lg"
-          open={openModal}
-          onClose={() => setOpenModal(false)}
+          className="max-w-md"
+          open={openDialog}
+          onClose={() => setOpenDialog(false)}
           variant="warning"
           iconBadge={<X />}
           title="Abort Mission ?"
           description="This action will immediately halt all systems and terminate the
             mission sequence. This operation cannot be undone."
           mission={selectedMission}
-        ></DialogCard>
+          actions={
+            <div className="w-full flex gap-2 justify-center">
+              <Button
+                className="w-full text-sm text-white"
+                variant="ghost"
+                size={"lg"}
+                iconLeft={<X className="size-4" />}
+                onClick={() => setOpenDialog(false)}
+              >
+                Cancel
+              </Button>
+
+              <Button
+                className="w-full text-sm"
+                variant="warning"
+                iconLeft={<CornerUpLeft className="size-4" />}
+                onClick={(e) => handleAbortMission(e)}
+              >
+                Abort
+              </Button>
+            </div>
+          }
+        />
       )}
     </>
   );

@@ -1,6 +1,15 @@
-import { Check } from "lucide-react";
+import { Check, Rocket, X } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MissionInfoCard } from "../components/missions";
-import { Button, Card, Divider, Input, Selector } from "../components/ui";
+import {
+  Button,
+  Card,
+  DialogCard,
+  Divider,
+  Input,
+  Selector,
+} from "../components/ui";
 import {
   eligibilityPlanets,
   launchInfoCards,
@@ -9,15 +18,25 @@ import {
 import { useClickFeedback } from "../hooks";
 
 export default function Launch() {
+  const [openDialog, setOpenDialog] = useState(false);
+
   const { trigger: audioTrigger } = useClickFeedback({
-    audioPath: "/sound/warning.mp3",
+    audioPath: "/sound/success.mp3",
     duration: 100,
   });
 
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const navigate = useNavigate();
 
+  // Function used to launch a new mission
+  const handleNewMission = (e: React.MouseEvent) => {
+    e.preventDefault();
     audioTrigger();
+
+    setOpenDialog(false);
+
+    setTimeout(() => {
+      navigate("/upcoming");
+    }, 300);
   };
 
   const infoLaunchCardData: LaunchData = {
@@ -28,7 +47,7 @@ export default function Launch() {
   };
 
   return (
-    <div className="flex w-full h-full">
+    <>
       <div className="flex flex-col w-full gap-12 pb-8">
         {/* Info Cards */}
         <div className="md:flex grid grid-cols-2">
@@ -49,12 +68,12 @@ export default function Launch() {
             Kepler Exoplanets.
           </h1>
 
-          <Divider variant="thick" />
+          <Divider type="thick" />
 
           <div className="flex flex-col gap-4">
             {/* Eligibility Criteria  */}
             <Card className="gap-4 sm:gap-6 p-4 sm:p-6 text-cyber-cyan-text">
-              <Divider variant="label" label="Eligibility Criteria" />
+              <Divider type="label" label="Eligibility Criteria" />
 
               <h2 className="text-white-light text-base">
                 Only confirmed planets matching the following criteria are
@@ -80,7 +99,7 @@ export default function Launch() {
 
             {/* Form Card */}
             <Card className="gap-4 sm:gap-6 p-4 sm:p-6 text-cyber-cyan-text ">
-              <Divider variant="label" label="Mission Parameters" />
+              <Divider type="label" label="Mission Parameters" />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <Input
@@ -134,7 +153,7 @@ export default function Launch() {
 
                 <Button
                   className="sm:w-[14rem] py-2 gap-2"
-                  onClick={(e) => handleClick(e)}
+                  onClick={() => setOpenDialog(true)}
                   variant="success"
                 >
                   Launch Mission <Check className="size-4" />
@@ -150,6 +169,47 @@ export default function Launch() {
           </div>
         </section>
       </div>
-    </div>
+
+      {/* Dialog card */}
+      <DialogCard
+        className="max-w-md"
+        open={openDialog}
+        onClose={() => setOpenDialog(false)}
+        variant="success"
+        iconBadge={<Rocket />}
+        title="Launch a Mission"
+        description="Your mission has been submitted and is pending director authorization. You will be notified once clearance is granted."
+        mission={{
+          id: 1,
+          date: "Apr 24, 2026",
+          mission: "Starlink Batch 12",
+          rocket: "Explorer IS1",
+          target: "Kepler-452 b",
+          status: "success",
+        }}
+        actions={
+          <div className="w-full flex gap-2 justify-center">
+            <Button
+              className="w-full text-sm text-white"
+              variant="ghost"
+              size={"lg"}
+              iconLeft={<X className="size-4" />}
+              onClick={() => setOpenDialog(false)}
+            >
+              Cancel
+            </Button>
+
+            <Button
+              className="w-full text-sm"
+              variant="success"
+              iconLeft={<Rocket className="size-4" />}
+              onClick={(e) => handleNewMission(e)}
+            >
+              New Mission
+            </Button>
+          </div>
+        }
+      />
+    </>
   );
 }

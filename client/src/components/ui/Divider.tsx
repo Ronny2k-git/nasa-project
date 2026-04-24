@@ -1,22 +1,36 @@
+import type { EnergyVariant } from "../../consts";
+
 type DividerProps = {
   label?: string;
-  variant?: "label" | "thick" | "line";
+  variant?: EnergyVariant;
+  type?: "label" | "thick" | "line";
 };
 
-export function Divider({ label, variant = "line" }: DividerProps) {
+const dividerStyles = {
+  cyan: "bg-cyan-900/70",
+  green: "bg-green-500/40",
+  red: "bg-red-500/40",
+  orange: "bg-orange-500/40",
+};
+
+export function Divider({
+  label,
+  variant = "cyan",
+  type = "line",
+}: DividerProps) {
   return (
-    <div
-      className={`flex items-center w-full ${variant === "label" && "gap-4"}`}
-    >
-      {variant === "label" && label && (
+    <div className={`flex items-center w-full ${type === "label" && "gap-4"}`}>
+      {type === "label" && label && (
         <span className="text-[11px] text-cyber-cyan-text font-heading uppercase font-semibold tracking-widest whitespace-nowrap">
           ◊ {label}
         </span>
       )}
 
-      {variant === "thick" && <div className="w-20 bg-cyan-600 h-[3px]" />}
+      {type === "thick" && (
+        <div className={`w-20 h-[3px] ${dividerStyles[variant]}`} />
+      )}
 
-      <div className="flex-1 h-px bg-cyan-900/70" />
+      <div className={`flex-1 h-px ${dividerStyles[variant]}`} />
     </div>
   );
 }
