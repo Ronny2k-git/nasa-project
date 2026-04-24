@@ -5,4 +5,5 @@ export * from "./Divider";
 export * from "./EnergyBadge";
 export * from "./Input";
 export * from "./Modal";
+export * from "./Portal";
 export * from "./Selector";

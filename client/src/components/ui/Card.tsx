@@ -17,7 +17,7 @@ export function Card({
   return (
     <div
       className={twMerge(
-        "flex flex-col relative border border-bg-border bg-card-background",
+        "w-full flex flex-col relative border border-bg-border bg-card-background",
         className,
       )}
       {...props}

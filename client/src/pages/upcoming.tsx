@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { EmptyBanner, Pagination, SectionLabel } from "../components";
 import { MissionInfoCard, MissionRowCard } from "../components/missions";
-import { Card, Divider, Input } from "../components/ui";
+import { Button, Card, Divider, Input, Modal } from "../components/ui";
 import { upcomingInfoCards, type UpcomingData } from "../consts";
 import { useSearchMissions } from "../hooks";
 
 export default function Upcoming() {
   const [page, setPage] = useState(1);
+  const [openModal, setOpenModal] = useState(false);
   const { searchedMissions, search, setSearch } = useSearchMissions();
 
   const navigate = useNavigate();
@@ -33,6 +34,21 @@ export default function Upcoming() {
             />
           ))}
         </div>
+
+        <Modal
+          className="max-w-5xl"
+          isOpen={openModal}
+          onClose={() => setOpenModal(false)}
+          trigger={
+            <Button variant={"primary"} onClick={() => setOpenModal(true)}>
+              Open Modal
+            </Button>
+          }
+        >
+          <span className="text-cyber-cyan-text">
+            TEEEEEEEEESSSSSSSSSSTTTTTTTTTTTTT
+          </span>
+        </Modal>
 
         <section className="flex flex-col w-full max-w-5xl mx-auto text-base sm:text-lg gap-8 px-4 md:px-8">
           {/* Title */}
